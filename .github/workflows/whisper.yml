@@ -1,0 +1,19 @@
+name: Scan for Secrets
+on:
+  push:
+    paths:
+      - .github/workflows/whispers.yaml
+    branches:
+      - main
+
+jobs:
+  scan:
+    container:
+      image: codnam007/whispers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Check out code
+
+      - name: Scan Code with Whispers
+        run: whispers -c whispers.yaml .   

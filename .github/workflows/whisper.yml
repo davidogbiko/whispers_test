@@ -21,7 +21,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_ICON_EMOJI: ':male-detective:'
-          SLACK_MESSAGE: ${{join(steps.scan.outputs.*, '\n')}}
+          SLACK_MESSAGE: ${{ steps.scan.outputs.whispers-scan }}
           SLACK_TITLE: Whispers Scan Report
           SLACK_FOOTER: Whispers
           SLACK_WEBHOOK: ${{ secrets.WHISPERS_SLACK_WEBHOOK }}

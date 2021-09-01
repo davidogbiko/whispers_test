@@ -15,7 +15,7 @@ jobs:
 
       - name: Scan Code with Whispers
         id: scan
-        run: "::set-output name=whispers-scan::$(whispers -c whispers.yaml .)\n"
+        run: echo "::set-output name=whispers-scan::$(whispers -c whispers.yaml .)\n"
       
       - name: Notify Slack
         uses: rtCamp/action-slack-notify@v2

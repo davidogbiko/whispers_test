@@ -20,10 +20,9 @@ jobs:
       - name: Notify Slack
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_ICON_EMOJI: male-detective
+          SLACK_ICON_EMOJI: ':male-detective:'
           SLACK_MESSAGE: ${{join(steps.scan.outputs.*, '\n')}}
-          SLACK_MSG_AUTHOR: Whispers
           SLACK_TITLE: Whispers Scan Report
           SLACK_FOOTER: Whispers
           SLACK_WEBHOOK: ${{ secrets.WHISPERS_SLACK_WEBHOOK }}
-          MSG_MINIMAL: true
+          MSG_MINIMAL: commit

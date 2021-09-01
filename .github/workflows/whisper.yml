@@ -14,4 +14,13 @@ jobs:
         name: Check out code
 
       - name: Scan Code with Whispers
+        id: scan
         run: whispers -c whispers.yaml .   
+      
+      - name: Notify Slack
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_ICON_EMOJI: ':male-detective:'
+          SLACK_MESSAGE: ${{join(steps.scan.outputs.*, '\n')}}
+          SLACK_TITLE: Whispers Scan Report
+          SLACK_WEBHOOK_URL: ${{ secrets.WHISPERS_SLACK_WEBHOOK }}
